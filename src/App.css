@@ -1,0 +1,66 @@
+.title{
+    text-align: center;
+    line-height: 40px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #999;
+    border-bottom: solid #eee 1px;
+}
+
+.player-box{
+    width: 150px;
+    height: 150px;
+    margin: 20px auto 10px;
+    border: solid #e7e7e7 6px;
+    border-radius: 81px;
+    overflow: hidden;
+}
+
+.player-box img,
+.player-box .img{
+    width: 150px;
+    height: 150px;
+}
+
+.circle{
+    animation:circle 5s infinite linear;
+}
+@keyframes circle{
+    0%{ transform:rotate(0deg); }
+    100%{ transform:rotate(360deg); }
+}
+
+.info-box{
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    line-height: 25px;
+}
+
+.lyric-box{
+    width: 320px;
+    height: 240px;
+    text-align: center;
+    line-height: 23px;
+    margin: 20px auto 0;
+    overflow-y: scroll;
+    font-size: 13px;
+    color: #999;
+}
+
+.random-button{
+    border-top: solid #eee 1px;
+    background-color: #f9f9f9;
+    color: #21b2f5;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+}
