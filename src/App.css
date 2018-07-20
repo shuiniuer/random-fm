@@ -20,6 +20,7 @@
 .player-box .img{
     width: 150px;
     height: 150px;
+    border-radius: 75px;
 }
 
 .circle{
