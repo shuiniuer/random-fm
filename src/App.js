@@ -72,7 +72,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <audio autoPlay={true} loop={false} src="http://mr3.doubanio.com/ca754a4d23048eab9f2f2eeef0c1bafc/0/fm/song/p819_128k.mp4" id="music"/>
+                <audio autoPlay={true} loop={false} src={this.state.song.url} id="music"/>
                 <div className="title">
                     和喜欢的音乐不期而遇
                 </div>
