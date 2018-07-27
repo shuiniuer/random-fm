@@ -12,12 +12,14 @@ class App extends Component {
                 artist:''
             },
             lyric: ''
-        }
+        };
+        this.music = null;
     }
 
     componentDidMount () {
         this.randomMusic();
     }
+
 
     randomMusic () {
         axios.get('https://douban.fm/j/v2/playlist',{
@@ -34,23 +36,30 @@ class App extends Component {
                 if(res.data.song.length>0){
 
                     let song = res.data.song[0];
-                    let music = document.getElementById('music');
                     this.setState({
                         song:song
                     });
 
-                    music.src = song.url;
-                    let promise = music.play();
-                    if (promise !== undefined) {
-                        promise.catch(error => {
-                            document.addEventListener("click", function () {
-                                music.play();
-                            }, false);
-                        }).then(() => {
-                            // Auto-play started
-                        });
+                    if(!this.music){
+                        this.music = document.getElementById('music');
+                        document.addEventListener("click",  ()=> {
+                            this.music.play();
+                        }, false);
                     }
-                    music.onended = ()=>{
+                    this.music.src = song.url;
+
+                    let promise = this.music.play();
+
+                    promise.catch(
+                        function(err){
+                            
+                        }
+                    ).then(
+                        function(){
+
+                        }
+                    );
+                    this.music.onended = ()=>{
                         this.randomMusic();
                     };
 
