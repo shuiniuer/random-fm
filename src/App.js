@@ -72,7 +72,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <video id="music" src={this.state.song.url} autoplay="autoplay">
+                <video id="music" src="http://shuiniuer.cn:8080/blog/Uploads/video/2017-07-14/5968d26e8805d.mp4" autoplay="autoplay">
                 </video>
                 <div className="title">
                     和喜欢的音乐不期而遇
