@@ -8,7 +8,6 @@ class App extends Component {
         super();
         this.state = {
             song:{
-                url: '',
                 title: '',
                 artist:''
             },
@@ -16,14 +15,11 @@ class App extends Component {
         }
     }
 
+    music = new Audio();
+
     componentDidMount () {
         this.randomMusic();
-        let music = document.getElementById("music");
-        // music.onplay=()=>{
-        //     console.log(music.currentTime);
-        //     console.log(music.duration);
-        // };
-        music.onended = ()=>{
+        this.music.onended = ()=>{
             this.randomMusic();
         };
     }
@@ -46,6 +42,10 @@ class App extends Component {
                     this.setState({
                         song:song
                     });
+
+                    this.music.src = song.url;
+                    this.music.play();
+
                     axios.get('https://douban.fm/j/v2/lyric',{params:{
                             sid: song.sid,
                             ssid: song.ssid
@@ -72,8 +72,6 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <video id="music" src="http://shuiniuer.cn:8080/blog/Uploads/video/2017-07-14/5968d26e8805d.mp4" autoplay="autoplay">
-                </video>
                 <div className="title">
                     和喜欢的音乐不期而遇
                 </div>
