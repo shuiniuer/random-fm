@@ -15,13 +15,8 @@ class App extends Component {
         }
     }
 
-    music = new Audio();
-
     componentDidMount () {
         this.randomMusic();
-        this.music.onended = ()=>{
-            this.randomMusic();
-        };
     }
 
     randomMusic () {
@@ -39,12 +34,25 @@ class App extends Component {
                 if(res.data.song.length>0){
 
                     let song = res.data.song[0];
+                    let music = document.getElementById('music');
                     this.setState({
                         song:song
                     });
 
-                    this.music.src = song.url;
-                    this.music.play();
+                    music.src = song.url;
+                    let promise = music.play();
+                    if (promise !== undefined) {
+                        promise.catch(error => {
+                            document.addEventListener("click", function () {
+                                music.play();
+                            }, false);
+                        }).then(() => {
+                            // Auto-play started
+                        });
+                    }
+                    music.onended = ()=>{
+                        this.randomMusic();
+                    };
 
                     axios.get('https://douban.fm/j/v2/lyric',{params:{
                             sid: song.sid,
@@ -72,6 +80,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <audio id="music"></audio>
                 <div className="title">
                     和喜欢的音乐不期而遇
                 </div>
