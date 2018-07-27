@@ -65,3 +65,7 @@
     text-align: center;
     cursor: pointer;
 }
+
+#music{
+    display: none;
+}
